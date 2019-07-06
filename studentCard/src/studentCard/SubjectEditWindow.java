@@ -16,10 +16,10 @@ public class SubjectEditWindow extends Components {
 	private Subject tempSubject;
 	private JPanel mainPanel;
 	private JFrame mainFrame;
-	private String[] buttonNames = { "Сохранить", "Выйти" };
+	private String[] buttonNames = { "РЎРѕС…СЂР°РЅРёС‚СЊ", "Р’С‹Р№С‚Рё" };
 	private JButton[] button = new JButton[2];
 	private JTextField[] textField = new JTextField[2];
-	private String[] labelNames = { "Идентификационный номер", "Название предмета"};
+	private String[] labelNames = { "РРґРµРЅС‚РёС„РёРєР°С†РёРѕРЅРЅС‹Р№ РЅРѕРјРµСЂ", "РќР°Р·РІР°РЅРёРµ РїСЂРµРґРјРµС‚Р°"};
 	private int[] labelBounds = { 10, 5, 280, 50, 10, 45, 280, 50 };
 	private int[] textFieldsBounds = { 250, 17, 200, 25, 250, 57, 200, 25};// 250, 337, 200, 25
 	private JLabel[] label = new JLabel[2];
@@ -32,7 +32,7 @@ public class SubjectEditWindow extends Components {
 		tempSubject = Connect.ReadSubjectByID(subjectID);
 		Connect.CloseDB();
 		mainPanel = CreateMainPanel();
-		mainFrame = CreateMainFrame("Редактирование предмета " + tempSubject.getName(), mainPanel, 500, 200);
+		mainFrame = CreateMainFrame("Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РїСЂРµРґРјРµС‚Р° " + tempSubject.getName(), mainPanel, 500, 200);
 		for (int i = 0; i < 2; i++) {
 			label[i] = CreateLabel(labelNames[i], labelBounds[i * 4], labelBounds[i * 4 + 1], labelBounds[i * 4 + 2],
 					labelBounds[i * 4 + 3]);
@@ -52,7 +52,7 @@ public class SubjectEditWindow extends Components {
 		button[0].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (textField[1].getText().equals("")) {
-					callMessage(mainPanel, "Проверьте правильность введенных данных", "Внимание!");
+					callMessage(mainPanel, "РџСЂРѕРІРµСЂСЊС‚Рµ РїСЂР°РІРёР»СЊРЅРѕСЃС‚СЊ РІРІРµРґРµРЅРЅС‹С… РґР°РЅРЅС‹С…", "Р’РЅРёРјР°РЅРёРµ!");
 				} else {
 					try {
 						Connect.Conn();

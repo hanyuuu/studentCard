@@ -15,10 +15,10 @@ public class SubjectAddWindow extends Components {
 	private Subject tempSubject;
 	private JPanel mainPanel;
 	private JFrame mainFrame;
-	private String[] buttonNames = { "Сохранить", "Выйти" };
+	private String[] buttonNames = { "РЎРѕС…СЂР°РЅРёС‚СЊ", "Р’С‹Р№С‚Рё" };
 	private JButton[] button = new JButton[2];
 	private JTextField[] textField = new JTextField[1];
-	private String[] labelNames = { "Название предмета" };
+	private String[] labelNames = { "РќР°Р·РІР°РЅРёРµ РїСЂРµРґРјРµС‚Р°" };
 	private int[] labelBounds = { 10, 5, 280, 50 };
 	private int[] textFieldsBounds = { 250, 17, 200, 25 };// 250, 337, 200, 25
 	private JLabel[] label = new JLabel[1];
@@ -26,7 +26,7 @@ public class SubjectAddWindow extends Components {
 
 	public SubjectAddWindow() throws ClassNotFoundException, SQLException {
 		mainPanel = CreateMainPanel();
-		mainFrame = CreateMainFrame("Добавление предмета", mainPanel, 500, 200);
+		mainFrame = CreateMainFrame("Р”РѕР±Р°РІР»РµРЅРёРµ РїСЂРµРґРјРµС‚Р°", mainPanel, 500, 200);
 		for (int i = 0; i < 1; i++) {
 			label[i] = CreateLabel(labelNames[i], labelBounds[i * 4], labelBounds[i * 4 + 1], labelBounds[i * 4 + 2],
 					labelBounds[i * 4 + 3]);
@@ -41,7 +41,7 @@ public class SubjectAddWindow extends Components {
 		button[0].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (textField[0].getText().equals("")) {
-					callMessage(mainPanel, "Проверьте правильность введенных данных", "Внимание!");
+					callMessage(mainPanel, "РџСЂРѕРІРµСЂСЊС‚Рµ РїСЂР°РІРёР»СЊРЅРѕСЃС‚СЊ РІРІРµРґРµРЅРЅС‹С… РґР°РЅРЅС‹С…", "Р’РЅРёРјР°РЅРёРµ!");
 				} else {
 					try {
 						Connect.Conn();
