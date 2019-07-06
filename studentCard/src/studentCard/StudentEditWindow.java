@@ -17,14 +17,14 @@ public class StudentEditWindow extends Components {
 	private Student tempStudent;
 	private JPanel mainPanel;
 	private JFrame mainFrame;
-	private String[] buttonNames = { "Сохранить", "Выйти" };
+	private String[] buttonNames = { "РЎРѕС…СЂР°РЅРёС‚СЊ", "Р’С‹Р№С‚Рё" };
 	private JButton[] button = new JButton[2];
 	private JTextField[] textField = new JTextField[9];
 	private JRadioButton[] radiobutton = new JRadioButton[2];
 	private int[] radiobuttonBounds = { 250, 327, 120, 50, 400, 327, 80, 50 };
-	private String[] radiobuttonNames = { "Да", "Нет" };
-	private String[] labelNames = { "Идентификационный номер", "Фамилия", "Имя", "Отчество", "Группа", "Курс", "Адрес",
-			"Номер телефона", "Имеет общежитие" };
+	private String[] radiobuttonNames = { "Р”Р°", "РќРµС‚" };
+	private String[] labelNames = { "РРґРµРЅС‚РёС„РёРєР°С†РёРѕРЅРЅС‹Р№ РЅРѕРјРµСЂ", "Р¤Р°РјРёР»РёСЏ", "РРјСЏ", "РћС‚С‡РµСЃС‚РІРѕ", "Р“СЂСѓРїРїР°", "РљСѓСЂСЃ", "РђРґСЂРµСЃ",
+			"РќРѕРјРµСЂ С‚РµР»РµС„РѕРЅР°", "РРјРµРµС‚ РѕР±С‰РµР¶РёС‚РёРµ" };
 	private int[] labelBounds = { 10, 5, 280, 50, 10, 45, 280, 50, 10, 85, 280, 50, 10, 125, 280, 50, 10, 165, 280, 50,
 			10, 205, 280, 50, 10, 245, 280, 50, 10, 285, 280, 50, 10, 325, 280, 50 };
 	private int[] textFieldsBounds = { 250, 17, 200, 25, 250, 57, 200, 25, 250, 97, 200, 25, 250, 137, 200, 25, 250,
@@ -39,7 +39,7 @@ public class StudentEditWindow extends Components {
 		tempStudent = Connect.ReadStudentByID(studentID);
 		Connect.CloseDB();
 		mainPanel = CreateMainPanel();
-		mainFrame = CreateMainFrame("Личная карточка студента (" + tempStudent.getSurname() + " "
+		mainFrame = CreateMainFrame("Р›РёС‡РЅР°СЏ РєР°СЂС‚РѕС‡РєР° СЃС‚СѓРґРµРЅС‚Р° (" + tempStudent.getSurname() + " "
 				+ tempStudent.getName().charAt(0) + "." + tempStudent.getPatronymic().charAt(0) + ".)", mainPanel, 500,
 				500);
 		for (int i = 0; i < 9; i++) {
@@ -85,7 +85,7 @@ public class StudentEditWindow extends Components {
 						|| textField[3].getText().equals("") || textField[4].getText().equals("")
 						|| textField[5].getText().equals("") || textField[6].getText().equals("")
 						|| textField[7].getText().equals("")) {
-					callMessage(mainPanel, "Проверьте правильность введенных данных", "Внимание!");
+					callMessage(mainPanel, "РџСЂРѕРІРµСЂСЊС‚Рµ РїСЂР°РІРёР»СЊРЅРѕСЃС‚СЊ РІРІРµРґРµРЅРЅС‹С… РґР°РЅРЅС‹С…", "Р’РЅРёРјР°РЅРёРµ!");
 				} else {
 					try {
 						boolean tempDorm = false;

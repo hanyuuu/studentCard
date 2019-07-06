@@ -1,17 +1,17 @@
 package studentCard;
 
-// Класс, описывающий студента
+// РљР»Р°СЃСЃ, РѕРїРёСЃС‹РІР°СЋС‰РёР№ СЃС‚СѓРґРµРЅС‚Р°
 
 public class Student {
-	private String surname; // Фамилия
-	private String name; // Имя
-	private String patronymic; // Отчество
-	private int index; // Номер зачетной книжки
-	private String group; // Группа студента
-	private int course; // Курс студента
-	private String adress; // Адрес студента
-	private String phoneNumber; // Номер телефона
-	private boolean hasDormitory; // Проживает ли в общежитии
+	private String surname; // Р¤Р°РјРёР»РёСЏ
+	private String name; // РРјСЏ
+	private String patronymic; // РћС‚С‡РµСЃС‚РІРѕ
+	private int index; // РќРѕРјРµСЂ Р·Р°С‡РµС‚РЅРѕР№ РєРЅРёР¶РєРё
+	private String group; // Р“СЂСѓРїРїР° СЃС‚СѓРґРµРЅС‚Р°
+	private int course; // РљСѓСЂСЃ СЃС‚СѓРґРµРЅС‚Р°
+	private String adress; // РђРґСЂРµСЃ СЃС‚СѓРґРµРЅС‚Р°
+	private String phoneNumber; // РќРѕРјРµСЂ С‚РµР»РµС„РѕРЅР°
+	private boolean hasDormitory; // РџСЂРѕР¶РёРІР°РµС‚ Р»Рё РІ РѕР±С‰РµР¶РёС‚РёРё
 
 	public Student(String surname, String name, String patronymic, int index, String group, int course, String adress,
 			String phoneNumber, boolean hasDormitory) {

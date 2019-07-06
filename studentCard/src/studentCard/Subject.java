@@ -2,11 +2,11 @@ package studentCard;
 
 import java.sql.SQLException;
 
-// Класс, описывающий предмет
+// РљР»Р°СЃСЃ, РѕРїРёСЃС‹РІР°СЋС‰РёР№ РїСЂРµРґРјРµС‚
 
 public class Subject {
 	private int number;
-	private String name; // Название предмета
+	private String name; // РќР°Р·РІР°РЅРёРµ РїСЂРµРґРјРµС‚Р°
 	public Subject(int number, String name) {
 		this.number = number;
 		this.name = name;

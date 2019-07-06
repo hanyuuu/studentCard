@@ -18,28 +18,28 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 
 public class StudentListWindow extends Components {
-	private static Object[] columnsHeader = new String[] { "№ЗК", "Фамилия", "Имя", "Отчество", "Группа", "Курс",
-			"Редактировать" };
+	private static Object[] columnsHeader = new String[] { "в„–Р—Рљ", "Р¤Р°РјРёР»РёСЏ", "РРјСЏ", "РћС‚С‡РµСЃС‚РІРѕ", "Р“СЂСѓРїРїР°", "РљСѓСЂСЃ",
+			"Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ" };
 	JScrollPane pane;
 	private static DefaultTableModel tableModel;
 	private JPanel mainPanel;
 	private JFrame mainFrame;
 	public static JTable mainTable;
-	private String[] buttonNames = { "Выйти из формы", "Добавить студента" };
+	private String[] buttonNames = { "Р’С‹Р№С‚Рё РёР· С„РѕСЂРјС‹", "Р”РѕР±Р°РІРёС‚СЊ СЃС‚СѓРґРµРЅС‚Р°" };
 	private JButton[] button = new JButton[2];
 	private int[] buttonBounds = { 450, 325, 135, 25, 300, 325, 145, 25 };
 	ArrayList<Student> students = Connect.getStudentsArray();
 
 	public StudentListWindow() {
 		mainPanel = CreateMainPanel();
-		mainFrame = CreateMainFrame("Управление студентами", mainPanel, 600, 400);
+		mainFrame = CreateMainFrame("РЈРїСЂР°РІР»РµРЅРёРµ СЃС‚СѓРґРµРЅС‚Р°РјРё", mainPanel, 600, 400);
 		for (int i = 0; i < 2; i++) {
 			button[i] = CreateButton(buttonNames[i], buttonBounds[i * 4], buttonBounds[i * 4 + 1],
 					buttonBounds[i * 4 + 2], buttonBounds[i * 4 + 3]);
 			mainPanel.add(button[i]);
 		}
 
-		// Создание таблицы с ползунком
+		// РЎРѕР·РґР°РЅРёРµ С‚Р°Р±Р»РёС†С‹ СЃ РїРѕР»Р·СѓРЅРєРѕРј
 		tableModel = new DefaultTableModel() {
 			@Override
 			   public boolean isCellEditable(int row, int column) {
@@ -48,17 +48,17 @@ public class StudentListWindow extends Components {
 			   }
 		};
 		tableModel.setColumnIdentifiers(columnsHeader);
-		// Заполнение таблицы
+		// Р—Р°РїРѕР»РЅРµРЅРёРµ С‚Р°Р±Р»РёС†С‹
 		for (int i = students.size() - 1; i >= 0; i--) {
 			Student temp = students.get(i);
 			tableModel.insertRow(0, new Object[] { Integer.toString(temp.getIndex()), temp.getSurname(), temp.getName(),
-					temp.getPatronymic(), temp.getGroup(), Integer.toString(temp.getCourse()), "Редактировать" });
+					temp.getPatronymic(), temp.getGroup(), Integer.toString(temp.getCourse()), "Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ" });
 		}
 		mainTable = CreateTable(tableModel);
 		pane = CreateScrollPane(mainTable, 25, 20, 550, 250);
 		mainFrame.add(pane);
-		mainTable.getColumn("Редактировать").setCellRenderer(new ButtonRenderer());
-		mainTable.getColumn("Редактировать").setCellEditor(new ButtonEditor(new JCheckBox()));
+		mainTable.getColumn("Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ").setCellRenderer(new ButtonRenderer());
+		mainTable.getColumn("Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ").setCellEditor(new ButtonEditor(new JCheckBox()));
 		//mainTable.setEnabled(false);
 		button[0].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -99,11 +99,11 @@ public class StudentListWindow extends Components {
 		for (int i = tempArray.size() - 1; i >= 0; i--) {
 			Student temp = tempArray.get(i);
 			tableModel.insertRow(0, new Object[] { Integer.toString(temp.getIndex()), temp.getSurname(), temp.getName(),
-					temp.getPatronymic(), temp.getGroup(), Integer.toString(temp.getCourse()), "Редактировать" });
+					temp.getPatronymic(), temp.getGroup(), Integer.toString(temp.getCourse()), "Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ" });
 		}
 		mainTable.setModel(dm);
 		Connect.CloseDB();
-		System.out.println("Таблица была обновлена");
+		System.out.println("РўР°Р±Р»РёС†Р° Р±С‹Р»Р° РѕР±РЅРѕРІР»РµРЅР°");
 	}
 
 	public void makeActive() {
@@ -173,7 +173,7 @@ class ButtonEditor extends DefaultCellEditor {
 	@Override
 	public Object getCellEditorValue() {
 		if (isPushed) {
-			System.out.println("Редактируем студента"
+			System.out.println("Р РµРґР°РєС‚РёСЂСѓРµРј СЃС‚СѓРґРµРЅС‚Р°"
 					+ StudentListWindow.mainTable.getModel().getValueAt(rowNum - 1, 0).toString());
 			StudentEditWindow EditWindow;
 			try {

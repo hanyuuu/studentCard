@@ -20,14 +20,14 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 
 public class SpecificStudentGradeListWindow extends Components {
-	private static Object[] columnsHeader = new String[] { "№", "Предмет", "Оценка", "Редактировать" };
+	private static Object[] columnsHeader = new String[] { "в„–", "РџСЂРµРґРјРµС‚", "РћС†РµРЅРєР°", "Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ" };
 	JScrollPane pane;
 	private static DefaultTableModel tableModel;
 	private JPanel mainPanel;
 	private JFrame mainFrame;
 	public static JTable mainTable;
-	private String[] buttonNames = { "Выйти из формы", "Выставить оценку", "Удалить" };
-	private String[] labelNames = { "Введите номер оценки и нажмите кнопку 'Удалить'", "№ Оценки для удаления:" };
+	private String[] buttonNames = { "Р’С‹Р№С‚Рё РёР· С„РѕСЂРјС‹", "Р’С‹СЃС‚Р°РІРёС‚СЊ РѕС†РµРЅРєСѓ", "РЈРґР°Р»РёС‚СЊ" };
+	private String[] labelNames = { "Р’РІРµРґРёС‚Рµ РЅРѕРјРµСЂ РѕС†РµРЅРєРё Рё РЅР°Р¶РјРёС‚Рµ РєРЅРѕРїРєСѓ 'РЈРґР°Р»РёС‚СЊ'", "в„– РћС†РµРЅРєРё РґР»СЏ СѓРґР°Р»РµРЅРёСЏ:" };
 	private int[] labelBounds = { 25, 275, 300, 25, 25, 300, 250, 25 };
 	private JLabel[] label = new JLabel[2];
 	private JButton[] button = new JButton[3];
@@ -47,7 +47,7 @@ public class SpecificStudentGradeListWindow extends Components {
 		grades = Connect.getGradesArray();
 		Connect.CloseDB();
 		mainPanel = CreateMainPanel();
-		mainFrame = CreateMainFrame("Управление оценками студента " + tempStudent.getSurname() + " "
+		mainFrame = CreateMainFrame("РЈРїСЂР°РІР»РµРЅРёРµ РѕС†РµРЅРєР°РјРё СЃС‚СѓРґРµРЅС‚Р° " + tempStudent.getSurname() + " "
 				+ tempStudent.getName().charAt(0) + "." + tempStudent.getPatronymic().charAt(0) + ".", mainPanel, 600,
 				425);
 		for (int i = 0; i < 3; i++) {
@@ -65,7 +65,7 @@ public class SpecificStudentGradeListWindow extends Components {
 				mainFrame.add(textField[i]);
 			}
 		}
-		// Создание таблицы с ползунком
+		// РЎРѕР·РґР°РЅРёРµ С‚Р°Р±Р»РёС†С‹ СЃ РїРѕР»Р·СѓРЅРєРѕРј
 		tableModel = new DefaultTableModel() {
 			@Override
 			public boolean isCellEditable(int row, int column) {
@@ -74,18 +74,18 @@ public class SpecificStudentGradeListWindow extends Components {
 			}
 		};
 		tableModel.setColumnIdentifiers(columnsHeader);
-		// Заполнение таблицы
+		// Р—Р°РїРѕР»РЅРµРЅРёРµ С‚Р°Р±Р»РёС†С‹
 		for (int i = grades.size() - 1; i >= 0; i--) {
 			Grade temp = grades.get(i);
 			tableModel.insertRow(0, new Object[] { Integer.toString(temp.getNumber()),
-					temp.getSubjNameBySubjID(temp.getSubjID()), temp.getMark(), "Редактировать" });
+					temp.getSubjNameBySubjID(temp.getSubjID()), temp.getMark(), "Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ" });
 		}
 		Connect.clearGradesArray();
 		mainTable = CreateTable(tableModel);
 		pane = CreateScrollPane(mainTable, 25, 20, 550, 250);
 		mainFrame.add(pane);
-		mainTable.getColumn("Редактировать").setCellRenderer(new ButtonRendererInSSGLW());
-		mainTable.getColumn("Редактировать").setCellEditor(new ButtonEditorInSSGLW(new JCheckBox()));
+		mainTable.getColumn("Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ").setCellRenderer(new ButtonRendererInSSGLW());
+		mainTable.getColumn("Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ").setCellEditor(new ButtonEditorInSSGLW(new JCheckBox()));
 		// mainTable.setEnabled(false);
 		filter = new textFieldFilter();
 		filter.PTextFilter(textField[0], 5);
@@ -146,12 +146,12 @@ public class SpecificStudentGradeListWindow extends Components {
 		for (int i = tempArray.size() - 1; i >= 0; i--) {
 			Grade temp = tempArray.get(i);
 			tableModel.insertRow(0, new Object[] { Integer.toString(temp.getNumber()),
-					temp.getSubjNameBySubjID(temp.getSubjID()), temp.getMark(), "Редактировать" });
+					temp.getSubjNameBySubjID(temp.getSubjID()), temp.getMark(), "Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ" });
 		}
 		mainTable.setModel(dm);
 		Connect.clearGradesArray();
 		Connect.CloseDB();
-		System.out.println("Таблица была обновлена");
+		System.out.println("РўР°Р±Р»РёС†Р° Р±С‹Р»Р° РѕР±РЅРѕРІР»РµРЅР°");
 	}
 
 	public static void deleteMark() {
@@ -226,7 +226,7 @@ class ButtonEditorInSSGLW extends DefaultCellEditor {
 	public Object getCellEditorValue() {
 		if (isPushed) {
 			/*
-			 * System.out.println("Редактируем оценку" +
+			 * System.out.println("Р РµРґР°РєС‚РёСЂСѓРµРј РѕС†РµРЅРєСѓ" +
 			 * SpecificStudentGradeListWindow.mainTable.getModel().getValueAt(rowNum - 1,
 			 * 0).toString());
 			 */

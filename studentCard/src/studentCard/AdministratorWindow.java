@@ -11,13 +11,13 @@ public class AdministratorWindow extends Components {
 	
 	private JPanel mainPanel;
 	private JFrame mainFrame;
-	private String[] buttonNames = { "Управление студентами", "Управление предметами", "Управление оценками", "Выйти из режима" };
+	private String[] buttonNames = { "РЈРїСЂР°РІР»РµРЅРёРµ СЃС‚СѓРґРµРЅС‚Р°РјРё", "РЈРїСЂР°РІР»РµРЅРёРµ РїСЂРµРґРјРµС‚Р°РјРё", "РЈРїСЂР°РІР»РµРЅРёРµ РѕС†РµРЅРєР°РјРё", "Р’С‹Р№С‚Рё РёР· СЂРµР¶РёРјР°" };
 	private JButton[] button = new JButton[4];
 	private int[] buttonBounds = { 66, 37, 250, 25, 66, 67, 250, 25, 66, 97, 250, 25,  181, 127, 135, 25 };
 
 	public AdministratorWindow() {
 		mainPanel = CreateMainPanel();
-		mainFrame = CreateMainFrame("Интерфейс администратора", mainPanel, 400, 250);
+		mainFrame = CreateMainFrame("РРЅС‚РµСЂС„РµР№СЃ Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂР°", mainPanel, 400, 250);
 		for (int i = 0; i < 4; i++) {
 			button[i] = CreateButton(buttonNames[i], buttonBounds[i * 4], buttonBounds[i * 4 + 1],
 					buttonBounds[i * 4 + 2], buttonBounds[i * 4 + 3]);

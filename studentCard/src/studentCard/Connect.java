@@ -41,18 +41,18 @@ public class Connect {
 	public static void WriteDB() throws SQLException {
 		statmt.execute("INSERT INTO `Students` (`stud_id`, `surname`, `name`, `patronymic`, `studGroup`,"
 				+ "`course`, `adress`, `phoneNumber`, `hasDormitory`) VALUES (NULL,"
-				+ "'Юрлов', 'Михаил', 'Викторович', 'ПИ-315', '3',"
-				+ "'ул. Первомайская, д. 75, кв. 31', '79279402064', '0');");
-		statmt.execute("INSERT INTO `Subjects` (`subj_id`, `subj_name`) VALUES (NULL, 'Программная инженерия');");
+				+ "'Р®СЂР»РѕРІ', 'РњРёС…Р°РёР»', 'Р’РёРєС‚РѕСЂРѕРІРёС‡', 'РџР-315', '3',"
+				+ "'СѓР». РџРµСЂРІРѕРјР°Р№СЃРєР°СЏ, Рґ. 75, РєРІ. 31', '79279402064', '0');");
+		statmt.execute("INSERT INTO `Subjects` (`subj_id`, `subj_name`) VALUES (NULL, 'РџСЂРѕРіСЂР°РјРјРЅР°СЏ РёРЅР¶РµРЅРµСЂРёСЏ');");
 		statmt.execute("INSERT INTO `Grade` (`id`, `studentID`, `subjectID`, `mark`) VALUES (NULL, '1', '1', '5');");
 	}
 
-	// Выборка отдельного студента по ID
+	// Р’С‹Р±РѕСЂРєР° РѕС‚РґРµР»СЊРЅРѕРіРѕ СЃС‚СѓРґРµРЅС‚Р° РїРѕ ID
 	public static Student ReadStudentByID(int studentID) throws ClassNotFoundException, SQLException {
 		System.out.println("");
 		System.out.println(
 				"==============================================================================================================");
-		System.out.println("Считываю студента с ID = " + studentID);
+		System.out.println("РЎС‡РёС‚С‹РІР°СЋ СЃС‚СѓРґРµРЅС‚Р° СЃ ID = " + studentID);
 		resSet = statmt.executeQuery(
 				"SELECT `stud_id`, `surname`, `name`, `patronymic`, `studGroup`, `course`, `adress`, `phoneNumber`, `hasDormitory` FROM Students WHERE stud_id = "
 						+ studentID);
@@ -79,7 +79,7 @@ public class Connect {
 		System.out.println("");
 		System.out.println(
 				"==============================================================================================================");
-		System.out.println("Считываю предмет с ID = " + subjectID);
+		System.out.println("РЎС‡РёС‚С‹РІР°СЋ РїСЂРµРґРјРµС‚ СЃ ID = " + subjectID);
 		resSet = statmt.executeQuery("SELECT `subj_id`, `subj_name` FROM Subjects WHERE subj_id = " + subjectID);
 		while (resSet.next()) {
 			int subj_id = resSet.getInt("subj_id");
@@ -106,8 +106,6 @@ public class Connect {
 				+ "', `phoneNumber`='" + phoneNumber + "', `hasDormitory`='" + dorm + "' WHERE stud_id = " + stud_id
 				+ ";");
 	}
-	/*
-		*/
 
 	public static void EditGradeByID(int ID, int subject, int mark) throws SQLException, ClassNotFoundException {
 		statmt.execute(
@@ -141,13 +139,13 @@ public class Connect {
 		statmt.execute("INSERT INTO `Subjects` (`subj_id`, `subj_name`) VALUES (NULL, '" + name + "');");
 	}
 
-	/* Подгрузка БД */
-	// Считывание студентов
+	/* РџРѕРґРіСЂСѓР·РєР° Р‘Р” */
+	// РЎС‡РёС‚С‹РІР°РЅРёРµ СЃС‚СѓРґРµРЅС‚РѕРІ
 	public static void ReadStudent() throws ClassNotFoundException, SQLException {
 		System.out.println("");
 		System.out.println(
 				"==============================================================================================================");
-		System.out.println("Печатаю студентов");
+		System.out.println("РџРµС‡Р°С‚Р°СЋ СЃС‚СѓРґРµРЅС‚РѕРІ");
 		resSet = statmt.executeQuery(
 				"SELECT `stud_id`, `surname`, `name`, `patronymic`, `studGroup`, `course`, `adress`, `phoneNumber`, `hasDormitory` FROM Students");
 		while (resSet.next()) {
@@ -168,12 +166,12 @@ public class Connect {
 		}
 	}
 
-	// Считывание предметов
+	// РЎС‡РёС‚С‹РІР°РЅРёРµ РїСЂРµРґРјРµС‚РѕРІ
 	public static void ReadSubject() throws ClassNotFoundException, SQLException {
 		System.out.println("");
 		System.out.println(
 				"==============================================================================================================");
-		System.out.println("Печатаю предметы");
+		System.out.println("РџРµС‡Р°С‚Р°СЋ РїСЂРµРґРјРµС‚С‹");
 		resSet = statmt.executeQuery("SELECT `subj_id`, `subj_name` FROM Subjects");
 		while (resSet.next()) {
 			int subj_id = resSet.getInt("subj_id");
@@ -184,12 +182,12 @@ public class Connect {
 		}
 	}
 
-	// Считывание оценок
+	// РЎС‡РёС‚С‹РІР°РЅРёРµ РѕС†РµРЅРѕРє
 	public static void ReadGrades() throws ClassNotFoundException, SQLException {
 		System.out.println("");
 		System.out.println(
 				"==============================================================================================================");
-		System.out.println("Печатаю оценки");
+		System.out.println("РџРµС‡Р°С‚Р°СЋ РѕС†РµРЅРєРё");
 		resSet = statmt.executeQuery(
 				"SELECT Grade.id AS gradeID, Students.stud_id AS studID, Subjects.subj_id AS subjID, Grade.mark AS studentsMark FROM Grade INNER JOIN Students ON Grade.studentID = Students.stud_id INNER JOIN Subjects ON Grade.subjectID = Subjects.subj_id");
 		while (resSet.next()) {
@@ -205,7 +203,7 @@ public class Connect {
 		System.out.println("");
 		System.out.println(
 				"==============================================================================================================");
-		System.out.println("Печатаю оценки студента " + studentID);
+		System.out.println("РџРµС‡Р°С‚Р°СЋ РѕС†РµРЅРєРё СЃС‚СѓРґРµРЅС‚Р° " + studentID);
 		resSet = statmt
 				.executeQuery("SELECT id, studentID, subjectID, mark FROM Grade WHERE studentID = '" + studentID + "'");
 		while (resSet.next()) {

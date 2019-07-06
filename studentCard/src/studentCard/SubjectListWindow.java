@@ -18,27 +18,27 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 
 public class SubjectListWindow extends Components {
-	private static Object[] columnsHeader = new String[] { "№", "Название предмета", "Редактировать" };
+	private static Object[] columnsHeader = new String[] { "в„–", "РќР°Р·РІР°РЅРёРµ РїСЂРµРґРјРµС‚Р°", "Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ" };
 	JScrollPane pane;
 	private static DefaultTableModel tableModel;
 	private JPanel mainPanel;
 	private JFrame mainFrame;
 	public static JTable mainTable;
-	private String[] buttonNames = { "Выйти из формы", "Добавить предмет" };
+	private String[] buttonNames = { "Р’С‹Р№С‚Рё РёР· С„РѕСЂРјС‹", "Р”РѕР±Р°РІРёС‚СЊ РїСЂРµРґРјРµС‚" };
 	private JButton[] button = new JButton[2];
 	private int[] buttonBounds = { 450, 325, 135, 25, 300, 325, 145, 25 };
 	ArrayList<Subject> subjects = Connect.getSubjectsArray();
 
 	public SubjectListWindow() {
 		mainPanel = CreateMainPanel();
-		mainFrame = CreateMainFrame("Управление предметами", mainPanel, 600, 400);
+		mainFrame = CreateMainFrame("РЈРїСЂР°РІР»РµРЅРёРµ РїСЂРµРґРјРµС‚Р°РјРё", mainPanel, 600, 400);
 		for (int i = 0; i < 2; i++) {
 			button[i] = CreateButton(buttonNames[i], buttonBounds[i * 4], buttonBounds[i * 4 + 1],
 					buttonBounds[i * 4 + 2], buttonBounds[i * 4 + 3]);
 			mainPanel.add(button[i]);
 		}
 
-		// Создание таблицы с ползунком
+		// РЎРѕР·РґР°РЅРёРµ С‚Р°Р±Р»РёС†С‹ СЃ РїРѕР»Р·СѓРЅРєРѕРј
 		tableModel = new DefaultTableModel() {
 			@Override
 			   public boolean isCellEditable(int row, int column) {
@@ -47,16 +47,16 @@ public class SubjectListWindow extends Components {
 			   }
 		};
 		tableModel.setColumnIdentifiers(columnsHeader);
-		// Заполнение таблицы
+		// Р—Р°РїРѕР»РЅРµРЅРёРµ С‚Р°Р±Р»РёС†С‹
 		for (int i = subjects.size() - 1; i >= 0; i--) {
 			Subject temp = subjects.get(i);
-			tableModel.insertRow(0, new Object[] { Integer.toString(temp.getNumber()), temp.getName(), "Редактировать" });
+			tableModel.insertRow(0, new Object[] { Integer.toString(temp.getNumber()), temp.getName(), "Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ" });
 		}
 		mainTable = CreateTable(tableModel);
 		pane = CreateScrollPane(mainTable, 25, 20, 550, 250);
 		mainFrame.add(pane);
-		mainTable.getColumn("Редактировать").setCellRenderer(new ButtonRendererInSubj());
-		mainTable.getColumn("Редактировать").setCellEditor(new ButtonEditorInSubj(new JCheckBox()));
+		mainTable.getColumn("Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ").setCellRenderer(new ButtonRendererInSubj());
+		mainTable.getColumn("Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ").setCellEditor(new ButtonEditorInSubj(new JCheckBox()));
 		//mainTable.setEnabled(false);
 		button[0].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -96,11 +96,11 @@ public class SubjectListWindow extends Components {
 		dm.fireTableDataChanged();
 		for (int i = tempArray .size() - 1; i >= 0; i--) {
 			Subject temp = tempArray.get(i);
-			tableModel.insertRow(0, new Object[] { Integer.toString(temp.getNumber()), temp.getName(), "Редактировать" });
+			tableModel.insertRow(0, new Object[] { Integer.toString(temp.getNumber()), temp.getName(), "Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ" });
 		}
 		mainTable.setModel(dm);
 		Connect.CloseDB();
-		System.out.println("Таблица была обновлена");
+		System.out.println("РўР°Р±Р»РёС†Р° Р±С‹Р»Р° РѕР±РЅРѕРІР»РµРЅР°");
 	}
 
 	public void makeActive() {
@@ -170,7 +170,7 @@ class ButtonEditorInSubj extends DefaultCellEditor {
 	@Override
 	public Object getCellEditorValue() {
 		if (isPushed) {
-			System.out.println("Редактируем предмет" + SubjectListWindow.mainTable.getModel().getValueAt(rowNum - 1, 0).toString());
+			System.out.println("Р РµРґР°РєС‚РёСЂСѓРµРј РїСЂРµРґРјРµС‚" + SubjectListWindow.mainTable.getModel().getValueAt(rowNum - 1, 0).toString());
 			SubjectEditWindow EditWindow;
 			try {
 				EditWindow = new SubjectEditWindow(Integer.valueOf(SubjectListWindow.mainTable.getModel().getValueAt(rowNum - 1, 0).toString()));

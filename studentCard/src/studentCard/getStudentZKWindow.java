@@ -14,12 +14,12 @@ import javax.swing.JTextField;
 public class getStudentZKWindow extends Components {
 	private JPanel mainPanel;
 	private JFrame mainFrame;
-	private String[] buttonNames = { "Просмотреть карточку", "Выйти" };
+	private String[] buttonNames = { "РџСЂРѕСЃРјРѕС‚СЂРµС‚СЊ РєР°СЂС‚РѕС‡РєСѓ", "Р’С‹Р№С‚Рё" };
 	private JButton[] button = new JButton[2];
 	private JTextField[] textField = new JTextField[1];
 	private int[] textFieldsBounds = { 25, 57, 96, 25};
 	private int[] buttonBounds = { 166, 57, 200, 25, 166, 97, 200, 25 };
-	private String[] labelNames = { "Введите номер студента для просмотра его карточки" };
+	private String[] labelNames = { "Р’РІРµРґРёС‚Рµ РЅРѕРјРµСЂ СЃС‚СѓРґРµРЅС‚Р° РґР»СЏ РїСЂРѕСЃРјРѕС‚СЂР° РµРіРѕ РєР°СЂС‚РѕС‡РєРё" };
 	private int[] labelBounds = { 25, 17, 366, 25 };
 	private JLabel[] label = new JLabel[1];
 	private textFieldFilter filter;
@@ -33,7 +33,7 @@ public class getStudentZKWindow extends Components {
 		Connect.CloseDB();
 		filter = new textFieldFilter();
 		mainPanel = CreateMainPanel();
-		mainFrame = CreateMainFrame("Приложение по работе с карточками студентов", mainPanel, 400, 170);
+		mainFrame = CreateMainFrame("РџСЂРёР»РѕР¶РµРЅРёРµ РїРѕ СЂР°Р±РѕС‚Рµ СЃ РєР°СЂС‚РѕС‡РєР°РјРё СЃС‚СѓРґРµРЅС‚РѕРІ", mainPanel, 400, 170);
 		for (int i = 0; i < 2; i++) {
 			button[i] = CreateButton(buttonNames[i], buttonBounds[i * 4], buttonBounds[i * 4 + 1],
 					buttonBounds[i * 4 + 2], buttonBounds[i * 4 + 3]);
@@ -64,7 +64,7 @@ public class getStudentZKWindow extends Components {
 						isThereSuchStudent = false;
 					}
 					if (isThereSuchStudent == false) {
-						callMessage(mainPanel, "Студент с таким номером отсутствует", "Внимание!");
+						callMessage(mainPanel, "РЎС‚СѓРґРµРЅС‚ СЃ С‚Р°РєРёРј РЅРѕРјРµСЂРѕРј РѕС‚СЃСѓС‚СЃС‚РІСѓРµС‚", "Р’РЅРёРјР°РЅРёРµ!");
 					}
 					isThereSuchStudent = false;
 				} catch (ClassNotFoundException | SQLException e1) {

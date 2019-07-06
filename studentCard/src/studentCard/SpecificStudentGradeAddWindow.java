@@ -17,10 +17,10 @@ public class SpecificStudentGradeAddWindow extends Components {
 	private JPanel mainPanel;
 	private JFrame mainFrame;
 	private String[] subjectsList;
-	private String[] buttonNames = { "Сохранить", "Выйти" };
+	private String[] buttonNames = { "РЎРѕС…СЂР°РЅРёС‚СЊ", "Р’С‹Р№С‚Рё" };
 	private JButton[] button = new JButton[2];
 	private JTextField[] textField = new JTextField[1];
-	private String[] labelNames = { "Предмет", "Оценка" };
+	private String[] labelNames = { "РџСЂРµРґРјРµС‚", "РћС†РµРЅРєР°" };
 	private int[] labelBounds = { 10, 45, 280, 50, 10, 85, 280, 50 };
 	private JComboBox mainComboBox;
 	private int[] textFieldsBounds = { 250, 97, 200, 25 };
@@ -33,7 +33,7 @@ public class SpecificStudentGradeAddWindow extends Components {
 	public SpecificStudentGradeAddWindow(int studentID) throws ClassNotFoundException, SQLException {
 		this.studentID = studentID;
 		mainPanel = CreateMainPanel();
-		mainFrame = CreateMainFrame("Редактирование оценки", mainPanel, 500, 200);
+		mainFrame = CreateMainFrame("Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РѕС†РµРЅРєРё", mainPanel, 500, 200);
 		subjectsList = new String[subjects.size()];
 		for (int k = 0; k < subjects.size(); k++) {
 			subjectsList[k] = subjects.get(k).getName();
@@ -58,7 +58,7 @@ public class SpecificStudentGradeAddWindow extends Components {
 		button[0].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (textField[0].getText().equals("")) {
-					callMessage(mainPanel, "Проверьте правильность введенных данных", "Внимание!");
+					callMessage(mainPanel, "РџСЂРѕРІРµСЂСЊС‚Рµ РїСЂР°РІРёР»СЊРЅРѕСЃС‚СЊ РІРІРµРґРµРЅРЅС‹С… РґР°РЅРЅС‹С…", "Р’РЅРёРјР°РЅРёРµ!");
 				} else {
 					try {
 						Connect.Conn();

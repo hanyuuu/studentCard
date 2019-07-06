@@ -11,13 +11,13 @@ import javax.swing.JPanel;
 public class MainWindow extends Components {
 	private JPanel mainPanel;
 	private JFrame mainFrame;
-	private String[] buttonNames = { "Управление", "Личная карточка студента" };
+	private String[] buttonNames = { "РЈРїСЂР°РІР»РµРЅРёРµ", "Р›РёС‡РЅР°СЏ РєР°СЂС‚РѕС‡РєР° СЃС‚СѓРґРµРЅС‚Р°" };
 	private JButton[] button = new JButton[2];
 	private int[] buttonBounds = { 66, 37, 250, 25, 66, 67, 250, 25 };
 
 	public MainWindow() {
 		mainPanel = CreateMainPanel();
-		mainFrame = CreateMainFrame("Приложение по работе с карточками студентов", mainPanel, 400, 170);
+		mainFrame = CreateMainFrame("РџСЂРёР»РѕР¶РµРЅРёРµ РїРѕ СЂР°Р±РѕС‚Рµ СЃ РєР°СЂС‚РѕС‡РєР°РјРё СЃС‚СѓРґРµРЅС‚РѕРІ", mainPanel, 400, 170);
 		for (int i = 0; i < 2; i++) {
 			button[i] = CreateButton(buttonNames[i], buttonBounds[i * 4], buttonBounds[i * 4 + 1],
 					buttonBounds[i * 4 + 2], buttonBounds[i * 4 + 3]);

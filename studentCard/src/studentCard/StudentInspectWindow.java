@@ -18,20 +18,20 @@ import javax.swing.table.DefaultTableModel;
 
 public class StudentInspectWindow extends Components {
 	private textFieldFilter filter;
-	private static Object[] columnsHeader = new String[] { "№", "Предмет", "Оценка" };
+	private static Object[] columnsHeader = new String[] { "в„–", "РџСЂРµРґРјРµС‚", "РћС†РµРЅРєР°" };
 	private int studentID;
 	private Student tempStudent;
 	private static DefaultTableModel tableModel;
 	private JPanel mainPanel;
 	private JFrame mainFrame;
 	public static JTable mainTable;
-	private String[] buttonNames = { "Выйти", "Выйти" };
+	private String[] buttonNames = { "Р’С‹Р№С‚Рё", "Р’С‹Р№С‚Рё" };
 	private ArrayList<Grade> grades;
 	JScrollPane pane;
 	private JButton[] button = new JButton[2];
 	private JTextField[] textField = new JTextField[9];
-	private String[] labelNames = { "Идентификационный номер", "Фамилия", "Имя", "Отчество", "Группа", "Курс", "Адрес",
-			"Номер телефона", "Имеет общежитие" };
+	private String[] labelNames = { "РРґРµРЅС‚РёС„РёРєР°С†РёРѕРЅРЅС‹Р№ РЅРѕРјРµСЂ", "Р¤Р°РјРёР»РёСЏ", "РРјСЏ", "РћС‚С‡РµСЃС‚РІРѕ", "Р“СЂСѓРїРїР°", "РљСѓСЂСЃ", "РђРґСЂРµСЃ",
+			"РќРѕРјРµСЂ С‚РµР»РµС„РѕРЅР°", "РРјРµРµС‚ РѕР±С‰РµР¶РёС‚РёРµ" };
 	private int[] labelBounds = { 10, 5, 280, 50, 10, 45, 280, 50, 10, 85, 280, 50, 10, 125, 280, 50, 10, 165, 280, 50,
 			10, 205, 280, 50, 10, 245, 280, 50, 10, 285, 280, 50, 10, 325, 280, 50 };
 	private int[] textFieldsBounds = { 377, 17, 200, 25,
@@ -55,7 +55,7 @@ public class StudentInspectWindow extends Components {
 		tempStudent = Connect.ReadStudentByID(studentID);
 		Connect.CloseDB();
 		mainPanel = CreateMainPanel();
-		mainFrame = CreateMainFrame("Личная карточка студента (" + tempStudent.getSurname() + " "
+		mainFrame = CreateMainFrame("Р›РёС‡РЅР°СЏ РєР°СЂС‚РѕС‡РєР° СЃС‚СѓРґРµРЅС‚Р° (" + tempStudent.getSurname() + " "
 				+ tempStudent.getName().charAt(0) + "." + tempStudent.getPatronymic().charAt(0) + ".)", mainPanel, 600,
 				750);
 		for (int i = 0; i < 9; i++) {
@@ -85,10 +85,10 @@ public class StudentInspectWindow extends Components {
 		textField[6].setText(tempStudent.getAdress());
 		textField[7].setText(tempStudent.getPhoneNumber());
 		if (tempStudent.gotDormitory() == true) {
-			textField[8].setText("Да");
+			textField[8].setText("Р”Р°");
 		}
 		else if (tempStudent.gotDormitory() == false) {
-			textField[8].setText("Нет");
+			textField[8].setText("РќРµС‚");
 		}
 		tableModel = new DefaultTableModel() {
 			@Override
@@ -98,7 +98,7 @@ public class StudentInspectWindow extends Components {
 			}
 		};
 		tableModel.setColumnIdentifiers(columnsHeader);
-		// Заполнение таблицы
+		// Р—Р°РїРѕР»РЅРµРЅРёРµ С‚Р°Р±Р»РёС†С‹
 		for (int i = grades.size() - 1; i >= 0; i--) {
 			Grade temp = grades.get(i);
 			tableModel.insertRow(0, new Object[] { Integer.toString(temp.getNumber()),
